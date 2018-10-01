@@ -3,6 +3,7 @@
 # @author Florian BELLANGER, Fyne DC, Annecy, FRANCE
 # @brief a set of generic functions for data management
 
+import numpy as np
 
 def average_above_zero(table):
     """
@@ -46,8 +47,6 @@ def reverse_table(table):
         table : a list of thing
     return:
         the reveersed table
-    raise :
-        check if table existe and is a table
     """
     
     numberOfElement = len(table)
@@ -73,10 +72,52 @@ print(reverse_table(tableToReverse))
     
 
 
+def roi_bbox(input_image):
+    """
+    give the bounding box coordinates of the object where the object is all the "1" point
+    Arg:
+        input_image : a array[X,Y]
+    return:
+        the bounding box value
+    """
+    position =np.array([[ -1, -1],
+                      [ -1, -1],
+                      [ -1, -1],
+                      [ -1, -1]])
+    listOfObjectComponent = np.zeros([2,2],dtype=int)
+    print (listOfObjectComponent)
+    for imageX in range(0,len(input_image)):
+        for imageY in range(0,len(input_image[imageX])):
+            if input_image[imageX][imageY]==1 :
+                listOfObjectComponent=np.append(listOfObjectComponent,np.array([[imageX,imageY]]),axis=0)
+                print (listOfObjectComponent)
+                """ 
+                if(position[2][0]==-1 and imageX == position[0][0]):
+                    position[2][0]=imageX
+                    position[2][1]=imageY
+                    print(str(position[2][0])+" "+str(position[2][1]))
+                if(position[1][0]==-1 and imageY == position[0][1]):
+                    position[1][0]=imageX
+                    position[1][1]=imageY
+                    print(str(position[1][0])+" "+str(position[1][1]))
+                if(position[0][0]==-1):
+                    position[0][0]=imageX
+                    position[0][1]=imageY
+                    print(str(position[0][0])+" "+str(position[0][1]))
+               """
+               
+            
+    return position
 
 
+image = np.array([[  0, 0, 0, 0, 0, 0],
+               [  0, 0, 0, 0, 0, 0],
+               [  0, 0, 1, 1, 0, 0],
+               [  0, 0, 1, 1, 0, 0],
+               [  0, 0, 0, 0, 0, 0],
+               [  0, 0, 0, 0, 0, 0]])
 
-
+roi_bbox(image)
 
 
 
