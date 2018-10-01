@@ -39,7 +39,35 @@ print('moyenne : '+str(average_above_zero(mesNotes)))
 """
 
 
-
+def reverse_table(table):
+    """
+    reverse a table without the use of any other table
+    Arg:
+        table : a list of thing
+    return:
+        the reveersed table
+    raise :
+        check if table existe and is a table
+    """
+    
+    numberOfElement = len(table)
+    currentIndex = 0
+    #temporal value for reverse
+    
+    for index in range(0,numberOfElement):
+        if currentIndex >= numberOfElement/2:
+            return table
+        temp =table[currentIndex]
+        table[currentIndex] = table[numberOfElement-currentIndex]
+        table[numberOfElement-currentIndex]=temp
+        currentIndex = currentIndex+1
+        
+    return "error"
+        
+tableToReverse =[5,12,12,-1,-3]
+print(reverse_table(tableToReverse))
+    
+    
 
 
 
@@ -107,6 +135,9 @@ def average_above_zero(input_list):
     print('Positive elements average is '+str(average))
     return float(average)
 
+    
+    
+    
 """#testing average_above_zero function:
 mylist=[1,2,3,4,-7]
 result=average_above_zero(mylist)
