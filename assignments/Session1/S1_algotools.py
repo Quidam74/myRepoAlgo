@@ -58,15 +58,18 @@ def reverse_table(table):
         if currentIndex >= numberOfElement/2:
             return table
         temp =table[currentIndex]
-        table[currentIndex] = table[numberOfElement-currentIndex]
-        table[numberOfElement-currentIndex]=temp
+        table[currentIndex] = table[numberOfElement-1-currentIndex]
+        table[numberOfElement-1-currentIndex]=temp
         currentIndex = currentIndex+1
         
     return "error"
         
-tableToReverse =[5,12,12,-1,-3]
+"""
+tableToReverse =[5,12,13,-1,16]
 print(reverse_table(tableToReverse))
-    
+tableToReverse =[5,12,13,-6]
+print(reverse_table(tableToReverse))
+"""    
     
 
 
