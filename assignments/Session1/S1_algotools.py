@@ -1,7 +1,62 @@
-##
+ ##
 #
-# @author Alexandre Benoit, LISTIC Lab, IUT Annecy le vieux, FRANCE
+# @author Florian BELLANGER, Fyne DC, Annecy, FRANCE
 # @brief a set of generic functions for data management
+
+
+def average_above_zero(table):
+    """
+    make average from a table of non-null positiv value
+    Arg:
+        table : a list of numeric values
+    return:
+        he computed average
+    raise :
+        check if there is no positive value in table
+    """
+    if not(isinstance(table, list)):
+        raise ValueError('expeced a list as input')
+    
+    average = -1
+    sum=0.0
+    positifValueNumber=0
+    for val in table:
+        if val>0:
+            sum=sum+val
+            positifValueNumber=positifValueNumber+1
+    if positifValueNumber <= 0:
+        raise ValueError('any positiv numbre in tab in function average_above_zero')
+    
+    
+    average = sum/positifValueNumber
+    return average
+
+"""
+mesNotes =[5,12,18,-1]#give 11.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
+mesNotes =[5,12,12,-1]#give 9.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """
 # a variable
