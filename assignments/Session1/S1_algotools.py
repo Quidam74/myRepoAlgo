@@ -74,50 +74,102 @@ print(reverse_table(tableToReverse))
 
 def roi_bbox(input_image):
     """
-    give the bounding box coordinates of the object where the object is all the "1" point
+        give the bounding box coordinates of the object where the object is all the "1" point
     Arg:
         input_image : a array[X,Y]
     return:
-        the bounding box value
+        the bounding box value where the point (0,0) is on the top left corner
     """
     position =np.array([[ -1, -1],
                       [ -1, -1],
                       [ -1, -1],
                       [ -1, -1]])
     listOfObjectComponent = np.zeros([2,2],dtype=int)
-    print (listOfObjectComponent)
-    for imageX in range(0,len(input_image)):
-        for imageY in range(0,len(input_image[imageX])):
+ 
+    bouncingXmin=-1
+    bouncingXmax=-1
+    bouncingYmin=-1
+    bouncingYmax=-1
+    
+    """
+    variables above are the equation on an X/Y plan of the border's bounding box. bouncing_Alpha_minOrMan where we can write alpha = ax+b (or just alpha = b here)
+    """
+    
+    imageX = 0
+    imageY = 0
+    iFoundNothing = True
+    """
+    iFoundNothing  = useful, permit to end loops faster
+    """
+    while imageX < len(input_image) and iFoundNothing:
+        while (imageY < len(input_image[imageX])) and iFoundNothing:
             if input_image[imageX][imageY]==1 :
-                listOfObjectComponent=np.append(listOfObjectComponent,np.array([[imageX,imageY]]),axis=0)
-                print (listOfObjectComponent)
-                """ 
-                if(position[2][0]==-1 and imageX == position[0][0]):
-                    position[2][0]=imageX
-                    position[2][1]=imageY
-                    print(str(position[2][0])+" "+str(position[2][1]))
-                if(position[1][0]==-1 and imageY == position[0][1]):
-                    position[1][0]=imageX
-                    position[1][1]=imageY
-                    print(str(position[1][0])+" "+str(position[1][1]))
-                if(position[0][0]==-1):
-                    position[0][0]=imageX
-                    position[0][1]=imageY
-                    print(str(position[0][0])+" "+str(position[0][1]))
-               """
+                bouncingXmin=imageX
+                iFoundNothing = False
+            imageY+=1
+        imageY = 0
+        imageX+=1
+        
+        
+    iFoundNothing = True
+    imageX = len(input_image)-1
+    imageY = len(input_image[imageX])-1 
+    
+    while imageX > 0 and iFoundNothing:
+        while imageY > 0 and iFoundNothing:
+            if input_image[imageX][imageY]==1 :
+                bouncingXmax=imageX 
+                iFoundNothing = False
+            imageY-=1
+        imageY =  len(input_image[imageX])-1
+        imageX-=1
                
-            
+    iFoundNothing = True    
+    imageX = 0
+    imageY = 0
+    
+    while imageY < len(input_image) and iFoundNothing:
+        while imageX < len(input_image[imageY]) and iFoundNothing:
+            if input_image[imageX][imageY]==1 :
+                bouncingYmin=imageY
+                iFoundNothing = False
+            imageX+=1
+        imageX = 0
+        imageY+=1
+    
+    
+    iFoundNothing = True
+    imageX = len(input_image)-1
+    imageY = len(input_image[imageX])-1 
+    
+    
+    while imageY > 0 and iFoundNothing:
+        while imageX > 0 and iFoundNothing:
+            if input_image[imageX][imageY]==1 :
+                bouncingYmax=imageY
+                iFoundNothing = False
+            imageX-=1
+        imageX = len(input_image)-1
+        imageY-=1
+        
+        
+        
+    print(bouncingYmin)
+    print(bouncingYmax)
+    print(bouncingXmin)
+    print(bouncingXmax)
     return position
 
-
+"""
 image = np.array([[  0, 0, 0, 0, 0, 0],
+               [  0, 1, 0, 0, 0, 0],
                [  0, 0, 0, 0, 0, 0],
-               [  0, 0, 1, 1, 0, 0],
-               [  0, 0, 1, 1, 0, 0],
+               [  0, 0, 0, 0, 0, 0],
                [  0, 0, 0, 0, 0, 0],
                [  0, 0, 0, 0, 0, 0]])
 
 roi_bbox(image)
+"""
 
 
 
@@ -286,3 +338,4 @@ coordsList=[[ymin, xmin],[ymin, xmax],[ymax, xmin],[ymax, xmax]]
 #->convert to an array
 coords_array=numpy.array(coordsList)
 """
+
