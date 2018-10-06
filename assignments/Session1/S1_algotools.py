@@ -231,7 +231,24 @@ myArray = np.empty([size,size], dtype=str)
 myArray = random_fill_sparse(myArray,6)
 print(myArray)
 """
+def remove_whitespace(table):
+    """
+        remove whitespace of a string
+    Arg:
+        table : a string
+    return:
+        the string without whitespace
+    """
+    index = 0
+    while index < len(table):
+        if(table[index]==' '):
+            table =table[0:index]  +table[index+1:len(table)-1] 
+        index+=1
+    return table
 
+myString = 'The coconut nut is a giant nut'
+myString = remove_whitespace(myString)
+print(myString)
 
 """
 # a variable
