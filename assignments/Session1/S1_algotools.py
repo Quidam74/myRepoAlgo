@@ -4,6 +4,8 @@
 # @brief a set of generic functions for data management
 
 import numpy as np
+from random import randrange
+
 
 def average_above_zero(table):
     """
@@ -171,15 +173,64 @@ image = np.array([[  0, 0, 0, 0, 0, 0],
 roi_bbox(image)
 """
 
+def give_back_array_full_of_empty_string(table):
+    """
+    give_back_array_full_of_empty_string
+    """
+    for posX in range(0,len(table)):
+        for posY in range(0,len(table[posX])):
+            table[posX][posY]=''
+    
+    
+    return table
 
 
+def random_fill_sparse(table, K):
+    """
+        fill K random cells position with the 'X' value of a numpy array N*N 
+    Arg:
+        table : a array[N,N]
+        K : the number of cells the function shoul fill with 'X'
+    error:
+        raise error if N*N < K
+    return:
+        the bounding box value where the point (0,0) is on the top left corner
+    """
+    
+    if len(table) * len(table)<K:
+        raise ValueError('not enough cells in table')
+        
+        
+    table = give_back_array_full_of_empty_string(table)
+    numberOfX = 0
+    fillWith = 'X'
+    """
+    we must be sure to have K cells fill with X, just do
+    for range(0,K)
+        posX = randrange(0,len(table))
+        posY = randrange(0,len(table))
+        table[posX][posY] = fillWith
+    don't permit to be sure
+    """
+    while numberOfX < K:
+        numberOfX = 0
+        posX = randrange(0,len(table))
+        posY = randrange(0,len(table))
+        table[posX][posY] = fillWith
+        for posX in range(0,len(table)):
+            for posY in range(0,len(table[posX])):
+                if table[posX][posY] == fillWith:
+                    numberOfX +=1
+    
 
+    return table
 
-
-
-
-
-
+"""
+size = 5
+myArray = np.empty([size,size], dtype=str)
+myArray = random_fill_sparse(myArray,6)
+print(myArray)
+"""
 
 
 """
