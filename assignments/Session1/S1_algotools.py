@@ -216,6 +216,9 @@ def random_fill_sparse(table, K):
         numberOfX = 0
         posX = randrange(0,len(table))
         posY = randrange(0,len(table))
+        """
+        randrange can't return the seconde value in parametter
+        """
         table[posX][posY] = fillWith
         for posX in range(0,len(table)):
             for posY in range(0,len(table[posX])):
@@ -242,13 +245,40 @@ def remove_whitespace(table):
     index = 0
     while index < len(table):
         if(table[index]==' '):
-            table =table[0:index]  +table[index+1:len(table)-1] 
+            table =table[0:index]  +table[index+1:len(table)-1]
         index+=1
     return table
 
+
+"""
 myString = 'The coconut nut is a giant nut'
 myString = remove_whitespace(myString)
 print(myString)
+"""
+
+def shuffle(list_in):
+    """
+        shuffle a list  efficiently
+    Arg:
+        list_in : a list
+    return:
+        the shuffle list
+    """
+    randomizeList =[None] * len(list_in)
+
+    while len(list_in)>0:
+        theChoosenOne = randrange(0,len(list_in))
+        randomizeList[len(list_in)-1] = list_in[theChoosenOne]
+        del list_in[theChoosenOne]
+    
+    
+    return randomizeList
+
+
+tableToShuffle =[5,12,13,-1,16]
+tableToShuffle =shuffle(tableToShuffle)
+print(tableToShuffle)
+
 
 """
 # a variable
