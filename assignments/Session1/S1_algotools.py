@@ -1,4 +1,4 @@
- ##
+##
 #
 # @author Florian BELLANGER, Fyne DC, Annecy, FRANCE
 # @brief a set of generic functions for data management
