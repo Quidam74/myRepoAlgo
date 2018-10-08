@@ -12,3 +12,7 @@ script:
   - pytest -v --cov .
   - sonar-scanner
   - coveralls
+branches:
+  only:
+  - master
+  - feaure/fbellanger
