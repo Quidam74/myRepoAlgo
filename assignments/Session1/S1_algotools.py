@@ -302,6 +302,7 @@ mylist_sum=mylist+mylist2
 """
 
 
+"""
 def average_above_zero(input_list):
     ##
     # compute the average of positive values
@@ -374,6 +375,78 @@ def max_value(input_list):
             max_idx=idx
 
     return max_val, max_idx
+
+def average_above_zero(tab):
+        """
+        Calcule la moyenne
+        Args:
+            tab is a list of numeric value
+
+        return:
+            the computed average
+
+        raise:
+            Value error if no positive value is found
+            Value error if input tab is not a list
+        """
+        
+        if not(isinstance(tab , list)):
+            raise ValueError('Expected a list as input')
+        
+        average =.99
+
+        valSum =0.0
+        nPositiveValue = 0
+        NMAX = len(tab)
+
+        for val in range(0,NMAX):
+            if val > 0:
+                valSum = valSum + float(val)
+                nPositiveValue = nPositiveValue+1
+
+        if nPositiveValue <= 0:
+            raise ValueError('No positif value found')
+
+        average = valSum/nPositiveValue
+
+        return average
+
+
+test_tab = [1,7,8,-5 , 5]
+<<<<<<< HEAD
+moy = average_above_zero(test_tab)
+=======
+moy = average_above_zero(testTab)
+>>>>>>> 3727b2a18e3e2302f838bca50faf188cddfdbc3c
+print(moy)
+
+def max_value(tabValue)
+     """
+        Calcule la valeur max du tableau
+        Args:
+            tab is a list of numeric value
+
+        return:
+            the max value
+
+        raise:
+        """
+        maxTab = max(testTab)
+        return maxTab
+
+
+tab = [1,7,8,-5 , 5]
+maxTab
+
+
+tab = [1,2,3,4]
+tabMax = max(tab)
+print(tabMax)
+
+
+
+
+
 """
 #test max_value function
 #1 basic test, expected answer=2
@@ -436,4 +509,5 @@ coordsList=[[ymin, xmin],[ymin, xmax],[ymax, xmin],[ymax, xmax]]
 #->convert to an array
 coords_array=numpy.array(coordsList)
 """
+=======
 
