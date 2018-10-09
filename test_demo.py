@@ -82,7 +82,7 @@ def check_S1_reverse_table(testList):
     # @test ensures the function raise the good error
     import numpy as np
     #another way to process the positive elements average to compare with
-    if(len(testList)==0)
+    if(len(testList)==0):
         reference_reverse_table = ValueError('nothing to reverse')
     assert load_S1_script().reverse_table(testList) == reference_reverse_table
 
