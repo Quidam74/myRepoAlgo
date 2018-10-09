@@ -56,25 +56,31 @@ def reverse_table(table):
     if numberOfElement == 0:
         raise ValueError('nothing to reverse')
     currentIndex = 0
-    #temporal value for reverse
     
     for index in range(0,numberOfElement):
         if currentIndex >= numberOfElement/2:
             return table
         temp =table[currentIndex]
+        #temporal value for reverse
         table[currentIndex] = table[numberOfElement-1-currentIndex]
         table[numberOfElement-1-currentIndex]=temp
         currentIndex = currentIndex+1
     
     raise ValueError('unKnow error')
+    return "error"
     
-        
 
+
+"""    
 tableToReverse =[5,12,13,-1,16]
 print(reverse_table(tableToReverse))
-tableToReverse =np.array([])
-print(reverse_table(tableToReverse))
-"""
+tableToReverse =[1, 1, 2, 3, 5, 8]
+aaa =reverse_table(tableToReverse)
+print([8, 5, 3, 2, 1, 1])
+if(aaa==[8, 5, 3, 2, 1, 1]):
+    print("ha")
+
+
 """    
     
 

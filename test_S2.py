@@ -12,7 +12,7 @@ def test_basicTrue():
 
 
 #testing session 1 functions
-def load_S1_script():
+def load_s1_script():
     """
         utility function that tris to load the script written along the first lesson
         @throws an ImportError exception if the script file does not exist
@@ -29,13 +29,13 @@ def load_S1_script():
 #load the scripts to check
 def test_session1script_exists():
     try:
-        load_S1_script()
+        load_s1_script()
         assert True
-    except  ImportError,e:
+    except  ImportError:
         print('Expected script not found, carrefuly check the assignement instructions ')
         assert False
 
-def check_S1_selective_average(testList):
+def check_s1_selective_average(testList):
     ##
     # utility function that asserts if load_S1_script().average_above_zero works fine
     # @param testList a list of values onto average_above_zero is applied
@@ -44,49 +44,49 @@ def check_S1_selective_average(testList):
     #another way to process the positive elements average to compare with
     positive_elements_float_array=np.array([i for i in testList if i >= 0], dtype=float)
     reference_average_value=np.mean(positive_elements_float_array)
-    assert load_S1_script().average_above_zero(testList) ==reference_average_value
+    assert load_s1_script().average_above_zero(testList) ==reference_average_value
 
-def test_S1_selective_average_non_zeros_values():
+def test_s1_selective_average_non_zeros_values():
     ##
     # @test validates average_above_zero works fine with integer values >0
-    check_S1_selective_average([1,2,3,4,-7])
+    check_s1_selective_average([1,2,3,4,-7])
 
-def test_S1_selective_average_with_zeros_values():
-    ##
-    # @test validates average_above_zero works fine with integer values >=0
-    check_S1_selective_average([0,1,2,3,4,-7])
 
-def test_S1_selective_average_with_negative_values():
+def test_s1_selective_average_with_negative_values():
     ##
     # @test validates average_above_zero works fine with integer values <=0
-    check_S1_selective_average([0,-7])
+    check_s1_selective_average([0,-7])
 
-def test_S1_selective_average_with_string_values():
+def test_s1_selective_average_with_string_values():
     ##
     # @test validates average_above_zero works fine with integer values <=0
-    check_S1_selective_average(['ab','c'])
+    check_s1_selective_average(['ab','c'])
 
-def test_S1_selective_average_with_string_values():
+def test_s1_selective_average_with_string_values():
     ##
     # @test validates average_above_zero works fine with an empty list
     try:
-        check_S1_selective_average([])
+        check_s1_selective_average([])
         assert False
     except ValueError:
         assert True
         
-def check_S1_reverse_table(testList):
+        
+#  =========================== test about reverse_table
+def test_reverse_table_value():
     ##
-    # utility function that asserts if load_S1_script().reverse_table works fine
-    # @param testList a list of values onto average_above_zero is applied
-    # @test ensures the function raise the good error
-    import numpy as np
-    #another way to process the positive elements average to compare with
-    if(len(testList)==0):
-        reference_reverse_table = ValueError('nothing to reverse')
-    assert load_S1_script().reverse_table(testList) == reference_reverse_table
+    # @test validates reverse_table works fine with correct array
+    assert load_s1_script().reverse_table([1, 1, 2, 3, 5, 8]) == [8, 5, 3, 2, 1, 1]
 
-def test_S1_reverse_table_empty_array_parameter():
+def test_reverse_table_of_table():
     ##
-    # @test validates reverse_table works fine with no value in array
-    check_S1_reverse_table_([empty_array_parameter])
+    # @test validates reverse_table works fine with array in array
+    assert load_s1_script().reverse_table([[1, 1], 2, 3, [5, 8]]) == [[5,8], 3, 2, [1, 1]]
+def test_reverse_table_with_string():
+    ##
+    # @test validates reverse_table works fine with string instead of array
+    try:
+        load_s1_script().reverse_table('array')
+        assert False
+    except TypeError:
+        assert True
