@@ -24,7 +24,7 @@ def average_above_zero(table):
     sum=0.0
     positifValueNumber=0
     for val in table:
-        if val>0:
+        if val>=0:
             sum=sum+val
             positifValueNumber=positifValueNumber+1
     if positifValueNumber <= 0:
@@ -34,11 +34,12 @@ def average_above_zero(table):
     average = sum/positifValueNumber
     return average
 
+
+mesNotes =[5,12,18,0]#give 11.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
+mesNotes =[5,12,12,0]#give 9.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
 """
-mesNotes =[5,12,18,-1]#give 11.66666666
-print('moyenne : '+str(average_above_zero(mesNotes)))
-mesNotes =[5,12,12,-1]#give 9.66666666
-print('moyenne : '+str(average_above_zero(mesNotes)))
 """
 
 
