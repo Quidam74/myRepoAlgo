@@ -90,3 +90,40 @@ def test_reverse_table_with_string():
         assert False
     except TypeError:
         assert True
+
+          
+#  =========================== test about roi_bbox
+
+
+
+"""
+def test_roi_bbox_value():
+    ##
+    # @test validates roi_bbox works fine with correct array
+    import numpy as np
+    image = np.array([[  0, 0, 0, 0, 0, 0],
+                   [  0, 1, 0, 0, 0, 0],
+                   [  0, 0, 0, 1, 0, 0],
+                   [  0, 0, 0, 0, 0, 0],
+                   [  0, 0, 1, 0, 0, 0],
+                   [  0, 0, 0, 0, 0, 0]])
+
+    assert load_s1_script().roi_bbox(image) == np.array([[1, 1],
+                                                         [1, 3],
+                                                         [4, 1],
+                                                         [4, 3]])
+
+def test_roi_bbox_of_table():
+    ##
+    # @test validates reverse_table works fine with array in array
+    assert load_s1_script().reverse_table([[1, 1], 2, 3, [5, 8]]) == [[5,8], 3, 2, [1, 1]]
+def test_roi_bbox_with_string():
+    ##
+    # @test validates reverse_table works fine with string instead of array
+    try:
+        load_s1_script().reverse_table('array')
+        assert False
+    except TypeError:
+        assert True
+        """
+        

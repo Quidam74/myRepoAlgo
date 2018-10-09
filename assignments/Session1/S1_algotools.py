@@ -93,10 +93,7 @@ def roi_bbox(input_image):
     return:
         the bounding box value where the point (0,0) is on the top left corner
     """
-    position =np.array([[ -1, -1],
-                      [ -1, -1],
-                      [ -1, -1],
-                      [ -1, -1]])
+  
     listOfObjectComponent = np.zeros([2,2],dtype=int)
  
     bouncingXmin=-1
@@ -166,22 +163,22 @@ def roi_bbox(input_image):
         imageY-=1
         
         
-        
-    print(bouncingYmin)
-    print(bouncingYmax)
-    print(bouncingXmin)
-    print(bouncingXmax)
+    position =np.array([[ bouncingXmin, bouncingYmin],
+                        [ bouncingXmin, bouncingYmax],
+                        [ bouncingXmax, bouncingYmin],
+                        [ bouncingXmax, bouncingYmax]])
+
     return position
 
 """
 image = np.array([[  0, 0, 0, 0, 0, 0],
                [  0, 1, 0, 0, 0, 0],
+               [  0, 0, 0, 1, 0, 0],
                [  0, 0, 0, 0, 0, 0],
-               [  0, 0, 0, 0, 0, 0],
-               [  0, 0, 0, 0, 0, 0],
+               [  0, 0, 1, 0, 0, 0],
                [  0, 0, 0, 0, 0, 0]])
 
-roi_bbox(image)
+print(roi_bbox(image))
 """
 
 def give_back_array_full_of_empty_string(table):
