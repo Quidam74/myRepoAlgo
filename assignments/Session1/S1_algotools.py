@@ -34,12 +34,11 @@ def average_above_zero(table):
     average = sum/positifValueNumber
     return average
 
-
-mesNotes =[5,12,18,0]#give 11.66666666
-print('moyenne : '+str(average_above_zero(mesNotes)))
-mesNotes =[5,12,12,0]#give 9.66666666
-print('moyenne : '+str(average_above_zero(mesNotes)))
 """
+mesNotes =[5,12,18,-1]#give 11.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
+mesNotes =[5,12,12,-1]#give 9.66666666
+print('moyenne : '+str(average_above_zero(mesNotes)))
 """
 
 
@@ -51,8 +50,11 @@ def reverse_table(table):
     return:
         the reveersed table
     """
+
     
     numberOfElement = len(table)
+    if numberOfElement == 0:
+        raise ValueError('nothing to reverse')
     currentIndex = 0
     #temporal value for reverse
     
@@ -63,14 +65,16 @@ def reverse_table(table):
         table[currentIndex] = table[numberOfElement-1-currentIndex]
         table[numberOfElement-1-currentIndex]=temp
         currentIndex = currentIndex+1
+    
+    raise ValueError('unKnow error')
+    
         
-    return "error"
-        
-"""
+
 tableToReverse =[5,12,13,-1,16]
 print(reverse_table(tableToReverse))
-tableToReverse =[5,12,13,-6]
+tableToReverse =np.array([])
 print(reverse_table(tableToReverse))
+"""
 """    
     
 
@@ -275,8 +279,9 @@ def shuffle(list_in):
     
     return randomizeList
 
-
+"""
 tableToShuffle =[5,12,13,-1,16]
 tableToShuffle =shuffle(tableToShuffle)
 print(tableToShuffle)
+"""
 

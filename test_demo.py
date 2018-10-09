@@ -74,3 +74,19 @@ def test_S1_selective_average_with_string_values():
         assert False
     except ValueError:
         assert True
+        
+def check_S1_reverse_table(testList):
+    ##
+    # utility function that asserts if load_S1_script().reverse_table works fine
+    # @param testList a list of values onto average_above_zero is applied
+    # @test ensures the function raise the good error
+    import numpy as np
+    #another way to process the positive elements average to compare with
+    if(len(testList)==0)
+        reference_reverse_table = ValueError('nothing to reverse')
+    assert load_S1_script().reverse_table(testList) == reference_reverse_table
+
+def test_S1_reverse_table_empty_array_parameter():
+    ##
+    # @test validates reverse_table works fine with no value in array
+    check_S1_reverse_table_([empty_array_parameter])
