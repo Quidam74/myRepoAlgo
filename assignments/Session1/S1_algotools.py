@@ -307,9 +307,24 @@ def sort_selective(list_in):
        list_in[item] = list_in[positionOfMax]
        list_in[positionOfMax] = temp
    return list_in
-
+"""
 listToSort = [10, 15, 7, 1, 3, 3, 9]
 sort_selective(listToSort)
 print(listToSort)
+"""
 
 
+def sort_bubble(list_in):
+    for item in range(len(list_in)-1,0,-1):
+        for i in range(item):
+            if list_in[i]>list_in[i+1]:
+                temp = list_in[i]
+                list_in[i] = list_in[i+1]
+                list_in[i+1] = temp
+
+
+"""
+listToSort = [10, 15, 7, 1, 3, 3, 9]
+sort_bubble(listToSort)
+print(listToSort)
+"""
