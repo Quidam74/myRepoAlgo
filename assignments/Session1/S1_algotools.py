@@ -288,3 +288,28 @@ tableToShuffle =shuffle(tableToShuffle)
 print(tableToShuffle)
 """
 
+
+def sort_selective(list_in):
+   """
+       Selective sort
+   Arg:
+       list_in : a list
+   return:
+       sorted list
+   """
+   for item in range(len(list_in)-1,0,-1):
+       positionOfMax=0
+       for index in range(1,item+1):
+           if list_in[index]>list_in[positionOfMax]:
+               positionOfMax = index
+
+       temp = list_in[item]
+       list_in[item] = list_in[positionOfMax]
+       list_in[positionOfMax] = temp
+   return list_in
+
+listToSort = [10, 15, 7, 1, 3, 3, 9]
+sort_selective(listToSort)
+print(listToSort)
+
+
