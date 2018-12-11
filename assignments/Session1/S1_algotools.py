@@ -181,6 +181,7 @@ image = np.array([[  0, 0, 0, 0, 0, 0],
 print(roi_bbox(image))
 """
 
+
 def give_back_array_full_of_empty_string(table):
     """
     give_back_array_full_of_empty_string
@@ -253,7 +254,7 @@ def remove_whitespace(table):
     index = 0
     while index < len(table):
         if(table[index]==' '):
-            table =table[0:index]  +table[index+1:len(table)-1]
+            table =table[0:index]  +table[index+1:len(table)]
         index+=1
     return table
 
@@ -263,6 +264,7 @@ myString = 'The coconut nut is a giant nut'
 myString = remove_whitespace(myString)
 print(myString)
 """
+
 
 def shuffle(list_in):
     """
@@ -321,6 +323,7 @@ def sort_bubble(list_in):
                 temp = list_in[i]
                 list_in[i] = list_in[i+1]
                 list_in[i+1] = temp
+    return list_in
 
 
 """
