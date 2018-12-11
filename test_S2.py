@@ -147,3 +147,22 @@ def test_remove_whitespace_with_no_string():
         assert True
 
         
+#  =========================== test about shuffle
+
+def test_shuffle_with_no_array_value():
+    ##
+    # @test validates shuffle works fine with no array in parameter.
+    try:
+        load_s1_script().shuffle(3)
+        assert False
+    except TypeError:
+        assert True
+
+def test_shuffle_with_array():
+    ##
+    # @test validates shuffle works fine with array
+    arrayTest = [i for i in range(10)]
+    initSum = sum(arrayTest)
+    result = load_s1_script().shuffle(arrayTest)
+
+    assert initSum == sum(result)
