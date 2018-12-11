@@ -129,3 +129,21 @@ def test_random_fill_sparse_value_with_no_int():
         assert True
 
       
+#  =========================== test about remove_whitespace
+
+def test_remove_whitespace_with():
+    ##
+    # @test validates remove_whitespace works fine.
+    assert load_s1_script().remove_whitespace('La fleur en bouquet fane, et jamais ne renaît !') == 'Lafleurenbouquetfane,etjamaisnerenaît!'
+    
+
+def test_remove_whitespace_with_no_string():
+    ##
+    # @test validates remove_whitespace works fine with no string in parameter.
+    try:
+        load_s1_script().remove_whitespace(8)
+        assert False
+    except TypeError:
+        assert True
+
+        
