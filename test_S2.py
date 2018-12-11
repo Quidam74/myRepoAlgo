@@ -166,3 +166,20 @@ def test_shuffle_with_array():
     result = load_s1_script().shuffle(arrayTest)
 
     assert initSum == sum(result)
+
+#  =========================== test about sort_selective
+
+
+def test_sort_selective_with_no_array():
+    ##
+    # @test validates sort_selective works fine with no array in parameter.
+    try:
+        load_s1_script().sort_selective(12)
+        assert False
+    except TypeError:
+        assert True
+
+def test_sort_selective_with_array():
+    ##
+    # @test validates sort_selective works fine with array.
+    assert load_s1_script().sort_selective([2, 5, 3, 25, 7, 9, 6, 7, 7, 1, 0, 10]) == [0, 1, 2, 3, 5, 6, 7, 7, 7, 9, 10, 25]
