@@ -13,26 +13,21 @@ url = os.environ.get("CLOUDAMQP",amqp_url)
 
 url = os.environ.get('CLOUDAMQP_URL', amqp_url)
 params = pika.URLParameters(url)
+params.socket_timeout = 5
 
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
 
-channel.queue_declare(queue='presentation')
+
+channel.queue_declare(queue='presentation', durable=True)
 while(1):
     channel.basic_publish(exchange='',
                       routing_key='presentation',
-                      body='Julien')
+                      body='Julien',
+                      properties=pika.BasicProperties(delivery_mode = 2))
+                        
     print(" [x] Sent 'Julien'")
     time.sleep(2) 
 
 
 
-
-def callback(ch, method, properties, body):
-    print(" [x] Received %r" % body)
-
-
-channel.basic_consume(callback,queue='presentation',no_ack=True)
-
-print(' [*] Waiting for messages. To exit press CTRL+C')
-channel.start_consuming()

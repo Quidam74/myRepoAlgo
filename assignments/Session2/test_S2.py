@@ -18,7 +18,7 @@ def load_s1_script():
         @throws an ImportError exception if the script file does not exist
         @return the script as a loaded module
     """
-    S1_script_filename='assignments/Session1/S1_algotools.py'
+    S1_script_filename='../Session1/S1_algotools.py'
     print('Trying to load target scripts:'+S1_script_filename)
     import imp
     s1_algotools=imp.load_source('session_1_script', S1_script_filename)
