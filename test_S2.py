@@ -116,3 +116,16 @@ def test_roi_bbox_with_array():
                [  0, 0, 1, 0, 0, 0],
                [  0, 0, 0, 0, 0, 0]])) , np.array([[1, 1], [1, 3], [4, 1], [4, 3]]))
 
+
+#  =========================== test about random_fill_sparse
+
+def test_random_fill_sparse_value_with_no_int():
+    ##
+    # @test validates random_fill_sparse works fine with not int as second parameter.
+    try:
+        load_s1_script().random_fill_sparse(np.array([['', '', ''], ['', '', '']]), 'dd')
+        assert False
+    except TypeError:
+        assert True
+
+      
