@@ -183,3 +183,21 @@ def test_sort_selective_with_array():
     ##
     # @test validates sort_selective works fine with array.
     assert load_s1_script().sort_selective([2, 5, 3, 25, 7, 9, 6, 7, 7, 1, 0, 10]) == [0, 1, 2, 3, 5, 6, 7, 7, 7, 9, 10, 25]
+
+#  =========================== test about sort_bubble
+
+
+def test_sort_bubble_with_no_array():
+    ##
+    # @test validates sort_bubble works fine with no array in parameter..
+    try:
+        load_s1_script().sort_bubble(2)
+        assert False
+    except TypeError:
+        assert True
+
+
+def test_sort_bubble_with_array_of_ten():
+    ##
+    # @test validates sort_bubble works fine with array of 10 values.
+    assert load_s1_script().sort_bubble([2, 5, 8, 3, 7, 9, 6, 7, 7, 6, 1, 0]) == [0, 1, 2, 3, 5, 6, 6, 7, 7, 7, 8, 9]
